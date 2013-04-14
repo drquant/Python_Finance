@@ -2,7 +2,11 @@
 Created on April 12, 2013
 
 @author Steven Sommer
-@Summary: Portfolio Sortino Ratio Optimizer by adjusting allocations. This is a variant of the HW1 script which uses the optimal Sortino Ratio to determine the the optimal portfolio allocations. The appeal of using the Sortino Ratio is that it only penalizes the daily portfolio performance for the negative moment (negative volatility). Created script as an experiment to see if there are any differences in allocations and cumulative return based on optimization by optimal Sortino Ration vs Sharpe Ratio.
+@Summary: Portfolio Sortino Ratio Optimizer by adjusting allocations. This is a variant of the HW1 script which uses 
+the optimal Sortino Ratio to determine the the optimal portfolio allocations. The appeal of using the Sortino Ratio is 
+that it only penalizes the daily portfolio performance for the negative moment (negative volatility). Created script as 
+an experiment to see if there are any differences in allocations and cumulative return based on optimization by optimal 
+Sortino Ration vs Sharpe Ratio.
 Note: This version runs very, very fast!
 '''
 # QSTK Imports
@@ -89,13 +93,14 @@ def optimize(na_close, verbose=False):
                         if sortino > optimal_sortino:
                             optimal_sortino = sortino
                             optimal_allocation = ls_allocations
+                            sortino_opt_sharpe = sharpe
                             optimal_vol = vol
                             optimal_daily_ret = daily_ret
                             optimal_cum_ret = cum_ret
     if verbose:
         print "Possible Allocations:",count
         print "Permitted Allocations:",count2
-    return optimal_sortino, optimal_allocation, optimal_vol, optimal_daily_ret, optimal_cum_ret
+    return optimal_sortino, optimal_allocation, sortino_opt_sharpe, optimal_vol, optimal_daily_ret, optimal_cum_ret
     
 ######################################
 ############ MAIN CODE ###############
@@ -142,7 +147,7 @@ na_close = d_data['close'].values
 #vol, daily_ret, sharpe, cum_ret = simulate(dt_start, dt_end, ls_symbols, ls_allocations, verbose=True)
 
 # Call optimize function
-optimal_sortino, optimal_allocation, optimal_vol, optimal_daily_ret, optimal_cum_ret = optimize(na_close, verbose=True)
+optimal_sortino, optimal_allocation, sortino_opt_sharpe, optimal_vol, optimal_daily_ret, optimal_cum_ret = optimize(na_close, verbose=True)
 
 #
 # Required Output
@@ -152,6 +157,7 @@ print "End Date: ", dt_end.strftime("%B %d, %Y")
 print "Symbols: ", ls_symbols
 print "Optimal Allocations: ", optimal_allocation
 print "Sortino Ratio: ", optimal_sortino
+print "Sharpe Ratio of Sortino optimized portfolio: ", sortino_opt_sharpe
 print "Volatility (stdev of daily returns): ", optimal_vol
 print "Average Daily Return: ", optimal_daily_ret
 print "Cumulative Return: ", optimal_cum_ret
