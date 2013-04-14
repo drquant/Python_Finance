@@ -2,7 +2,10 @@
 Created on March 14, 2013
 
 @author: Steven Sommer
-@summary: Script scans SP500 for desired events and creates a graphic summary of all events within the designated time series. This script is modified to scan for event in which the price has fallen below a given price. The commented out lines were left in the code to enable adaptation of the code for a percentage price change vs the SP500. This script borrows heavily from the QSTK - Event Profiler Tutorial.
+@summary: Script scans SP500 for desired events and creates a graphic summary of all events within the designated time 
+series. This script is modified to scan for event in which the price has fallen below a given price. The commented out 
+lines were left in the code to enable adaptation of the code for a percentage price change vs the SP500. This script 
+borrows heavily from the QSTK - Event Profiler Tutorial.
 '''
 
 from pylab import *
