@@ -6,7 +6,7 @@ Created on April 12, 2013
 the optimal Sortino Ratio to determine the the optimal portfolio allocations. The appeal of using the Sortino Ratio is 
 that it only penalizes the daily portfolio performance for the negative moment (negative volatility). Created script as 
 an experiment to see if there are any differences in allocations and cumulative return based on optimization by optimal 
-Sortino Ration vs Sharpe Ratio.
+Sortino Ratio vs Sharpe Ratio.
 Note: This version runs very, very fast!
 '''
 # QSTK Imports
