@@ -1,4 +1,3 @@
-
 '''
 Created 4/30/2013
 
@@ -11,10 +10,7 @@ import datetime as dt
 import urllib
 import urllib2
 import time
-
 from zipfile import ZipFile
-#from pandas.util.py3compat import StringIO, BytesIO, bytes_to_str
-
 from pandas import DataFrame, read_csv, concat
 from pandas.io.parsers import TextParser
 
