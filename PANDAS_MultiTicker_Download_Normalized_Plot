@@ -1,9 +1,10 @@
 '''
-@Date: January 26, 2014
+Created January 26, 2014
+
 @Author: Steven E. Sommer, MD, MBA
 @Commentary: Python script to download multiple stock tickers from Yahoo
 Finance, create a PANDAS dataframe, normalize the returns and plot the
-comparative returns vs the SPY (ETF proxy for S&P 500).
+comparative returns vs the SPY (ETF proxy for S&P 500). This script runs in Python 3.3.3 and PANDAS 0.13.0
 '''
 
 # Third Party Imports
