@@ -1,0 +1,43 @@
+'''
+@Date: January 26, 2014
+@Author: Steven E. Sommer, MD, MBA
+@Commentary: Python script to download multiple stock tickers from Yahoo
+Finance, create a PANDAS dataframe, normalize the returns and plot the
+comparative returns vs the SPY (ETF proxy for S&P 500).
+'''
+
+# Third Party Imports
+import pandas.io.data as web
+import matplotlib.pyplot as plt
+import datetime as dt
+import pandas as pd
+
+# Starting and Ending Dates
+start_date = dt.datetime(2013,8,1)
+end_date = dt.datetime(2014,1,24)
+
+# Tickers to download
+msft = web.DataReader('MSFT', "yahoo", start_date, end_date)
+wfc = web.DataReader('WFC', "yahoo", start_date, end_date)
+sne = web.DataReader('SNE', "yahoo", start_date, end_date)
+sbux = web.DataReader('SBUX', "yahoo", start_date, end_date)
+spy = web.DataReader('SPY', "yahoo", start_date, end_date)
+
+# Construct a PANDAS DataFrame
+df = pd.DataFrame(data = {'MSFT': msft['Adj Close'], 'WFC': wfc['Adj Close'], 'SNE': sne['Adj Close'], 'SBUX': sbux['Adj Close'], 'SPY': spy['Adj Close']})
+
+# Compute the Daily Returns
+df_ret = df.pct_change()
+
+# Index the Starting date to "0" to eliminate NAN
+df_ret.ix['2013-08-01'] = 0
+
+# Compute the Relative Returns
+df_rebased = (df_ret + 1).cumprod()
+
+# Plot the Relative Returns
+df_rebased.plot()
+
+# Save Plot as 'pdf' file
+plt.savefig('adjustedclose_ret.pdf', format='pdf')
+
