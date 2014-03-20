@@ -4,7 +4,8 @@ Created March 19, 2014
 @author: Steven Sommer (from Michael Halls-Moore's Mean Reversion Tutorial)
 @summary: Python script to look for Mean Reversion in time series data by application
 of the Augmented Dickey-Fuller (ADF) Test and, alternatively, testing for stationarity
-by the calculation of the Hurst Exponent.
+by the calculation of the Hurst Exponent. Please note that you must have patsy and statsmodels 
+installed to run this script.
 '''
 
 # Import the Time Series library
