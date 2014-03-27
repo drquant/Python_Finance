@@ -31,7 +31,7 @@ for sym in symbols:
     print sym1
     
     # Write data to a csv file
-    print "Writing data to csv file"
+    print "Writing " + sym + " data to csv file"
     with open('%s.csv' %sym, 'w') as outfile:
         writer = csv.writer(outfile)
         for index in sym1.index:
