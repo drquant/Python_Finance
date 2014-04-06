@@ -20,19 +20,21 @@ mpl.rc('figure', figsize=(8, 7))
 # Print Python, Pandas and Matplotlib versions
 print 'Python ' + sys.version
 print 'PANDAS ' + pd.__version__
-print 'Matplotlib ' + mpl.__version__
+print 'Matplotlib ' + mpl.__version__ + '\n'
 
 # Download historical price data from Yahoo Finance to a PANDAS DataFrame
 df = pd.io.data.get_data_yahoo(['AAPL', 'GE', 'HPQ', 'IBM', 'KO', 'MSFT', 'PEP'], 
                                start=dt.datetime(2010, 1, 1), 
                                end=dt.datetime(2013, 1, 1))['Adj Close']
 # Print out the headers for the DataFrame
+print 'DataFrame headers' + '\n'
 print df.head()
 
 # Calculate daily returns for the Tickers in the DataFrame
 rets = df.pct_change()
 
 # Create the annotated Markowitz Plot and save to a PDF file
+print '\n' + 'Creating annoted Markowitz Plot and saving to PDF file'
 plt.scatter(rets.std(), rets.mean())
 plt.xlabel('Risk')
 plt.ylabel('Expected returns')
