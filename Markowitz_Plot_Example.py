@@ -34,7 +34,7 @@ print df.head()
 rets = df.pct_change()
 
 # Create the annotated Markowitz Plot and save to a PDF file
-print '\n' + 'Creating annoted Markowitz Plot and saving to PDF file'
+print '\n' + 'Creating annotated Markowitz Plot and saving to PDF file'
 plt.scatter(rets.std(), rets.mean())
 plt.xlabel('Risk')
 plt.ylabel('Expected returns')
