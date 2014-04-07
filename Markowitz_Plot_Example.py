@@ -1,5 +1,6 @@
 '''
-Created April 6, 2014
+Created on April 6, 2014
+
 @author: Steven Sommer
 @summary: Python script to download historical price data from Yahoo Finance to
 a PANDAS DataFrame, construct a Markowitz Plot and save that plot as a PDF file.
