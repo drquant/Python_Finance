@@ -13,8 +13,7 @@ from MarkowitzPortfolio import *
 # Create Portfolio of stock Tickers and weights for each Ticker
 stockNames = ["MSFT", "HPQ", "AAPL", "NOK"]
 weights = [0.1,0.1,0.7,0.1]
-myPortfolio = MarkowitzPortfolio("01/01/2005", "today", "monthly", stockNames,
-                                 weights, 100000)
+myPortfolio = MarkowitzPortfolio("01/01/2005", "today", "monthly", stockNames, weights, 100000)
 
 print "Portfolio Mean Returns" + "\n"
 print myPortfolio.meanReturns 
