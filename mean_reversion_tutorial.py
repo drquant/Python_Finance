@@ -5,7 +5,9 @@ Created March 19, 2014
 @summary: Python script to look for Mean Reversion in time series data by application
 of the Augmented Dickey-Fuller (ADF) Test and, alternatively, testing for stationarity
 by the calculation of the Hurst Exponent. Please note that you must have patsy and statsmodels 
-installed to run this script.
+installed to run this script. Note: Google symbol edited on May 7, 2014 to reflect the recent 
+changes to the Google symbols due to the split of the shares in Class A and Class C stock: 
+GOOG = Class C stock and GOOGL = Class A stock. 
 '''
 
 # Import the Time Series library
@@ -20,11 +22,11 @@ from numpy import cumsum, log, polyfit, sqrt, std, subtract
 from numpy.random import randn
 
 # Download the Google OHLCV data from 1/1/2000 to 1/1/2013
-goog = DataReader("GOOG", "yahoo", datetime(2000,1,1), datetime(2013,1,1))
+googl = DataReader("GOOGL", "yahoo", datetime(2000,1,1), datetime(2013,1,1))
 
 # Output the results of the Augmented Dickey-Fuller test for Google
 # with a lag order value of 1
-Augdf = ts.adfuller(goog['Adj Close'], 1)
+Augdf = ts.adfuller(googl['Adj Close'], 1)
 print Augdf
 
 # Hurst Exponent Calculation
@@ -56,4 +58,4 @@ print "Hurst(MR):    %s" % hurst(mr)
 print "Hurst(TR):    %s" % hurst(tr)
 
 # Assuming you have run the above code to obtain 'goog'!
-print "Hurst(GOOG):  %s" % hurst(goog['Adj Close'])
+print "Hurst(GOOGL):  %s" % hurst(googl['Adj Close'])
