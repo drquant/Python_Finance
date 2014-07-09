@@ -57,5 +57,5 @@ print "Hurst(GBM):   %s" % hurst(gbm)
 print "Hurst(MR):    %s" % hurst(mr)
 print "Hurst(TR):    %s" % hurst(tr)
 
-# Assuming you have run the above code to obtain 'goog'!
+# Assuming you have run the above code to obtain 'googl'!
 print "Hurst(GOOGL):  %s" % hurst(googl['Adj Close'])
