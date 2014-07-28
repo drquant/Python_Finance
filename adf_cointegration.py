@@ -67,3 +67,8 @@ if __name__ == "__main__":
     
     # Print the ADF Cointegration Test Results
     print '\n' + 'ADF Cointegration Test' + '\n' + '\n' , adf_coint
+    print '\n' + 'ADF:', adf_coint[0]
+    print '\n' + 'p value:', adf_coint[1]
+    print '\n' + 'Lag:', adf_coint[2]
+    print '\n' + 'Observations used:', adf_coint[3]
+    print '\n' + 'Critical Values:', adf_coint[4]
