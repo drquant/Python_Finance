@@ -7,8 +7,6 @@ data, construct a scatter plot of pair prices, perform the ADF cointegration tes
 Conintegration Test results.
 '''
 
-
-
 import datetime as dt
 import pandas as pd
 import pandas.io.data
