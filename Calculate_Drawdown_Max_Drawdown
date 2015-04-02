@@ -1,0 +1,36 @@
+'''
+Created 4/2/2015
+
+@author: Steven Sommer
+@summary: Python script to calculate the current and maximum drawdown of an asset or trading strategy. This script 
+employs normalized returns to establish peak equity, current drawdown and maximum drawdown. This script is a very nice
+way to calculate the current drawdown and the maximum drawdown of a PANDAS DataFrame of normalized returns. 
+By employing a count that that tracks the current drawdown and maximum drawdown starting with the second data points
+in the index, you can look at and compare subsequent index data points to the first index data point.
+
+Please Note: This script will NOT run as written as a free standing script. You must specify the required library 
+imports, download data and calculate the normalized returns to run this script. However, you can easily incorporate 
+the code into an existing script or create a function from this script.
+'''
+
+# Calculate the drawdown and maximum drawdown
+symbols3 = ['SPXL','TMF','Sharpe']
+dd = pd.DataFrame(index=rets.index, columns=symbols3)
+eq_peak = pd.DataFrame(index=rets.index, columns=symbols3)
+max_dd = pd.DataFrame(index=rets.index, columns=symbols3)
+
+count = 0
+
+for i in rets.index:
+    for sym in symbols3:
+        if count == 0:
+            dd[sym][i]= 0
+            max_dd[sym][i] = 0
+        elif count > 0:
+            eq_peak[sym][i] = max(norm_rets[sym][i],norm_rets[sym][count-1])
+            if eq_peak[sym][i] == norm_rets[sym][i]:
+                dd[sym][i] = 0
+            elif eq_peak[sym][i] > norm_rets[sym][i]:
+                dd[sym][i] = -(eq_peak[sym][i] - norm_rets[sym][i])
+            max_dd[sym][i] = min(dd[sym][i],max_dd[sym][count-1])
+    count = count + 1
